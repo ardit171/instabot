@@ -291,11 +291,12 @@ def menu_follow():
             )
             if stripped_input() == "1":
                 user_id = input("who?\n").strip()
+                nfollows =int( input("How Many?\n").strip())
             else:
                 user_id = random.choice(bot.read_list_from_file(users_file))
-            bot.follow_followers(user_id)
+                nfollows=100
+            bot.follow_followers(user_id,nfollows=nfollows)
             menu_follow()
-
         elif ans == "3":
             print(
                 """
@@ -667,6 +668,7 @@ bot = Bot(
         "jasa",
         "open",
     ],
+filter_private_users=False,
 )
 
 # TODO parse setting[18] for proxy
